@@ -10,10 +10,10 @@ class BookingRequestUC6 {
     }
 }
 
-class RoomInventory {
+class RoomInventoryUC6 {
     private Map<String, Integer> inventory = new HashMap<>();
 
-    RoomInventory() {
+    RoomInventoryUC6() {
         inventory.put("Single Room", 2);
         inventory.put("Double Room", 1);
         inventory.put("Suite", 1);
@@ -32,7 +32,7 @@ class RoomAllocationService {
     private Set<String> allocatedRooms = new HashSet<>();
     private Map<String, Integer> counter = new HashMap<>();
 
-    public void allocateRoom(BookingRequest request, RoomInventory inventory) {
+    public void allocateRoom(BookingRequestUC6 request, RoomInventoryUC6 inventory) {
         if (!inventory.isAvailable(request.roomType)) {
             System.out.println("No rooms available for " + request.customerName);
             return;
@@ -56,13 +56,13 @@ public class UC6 {
 
         System.out.println("Room Allocation Processing");
 
-        Queue<BookingRequest> requestQueue = new LinkedList<>();
+        Queue<BookingRequestUC6> requestQueue = new LinkedList<>();
 
-        requestQueue.add(new BookingRequest("Abhi", "Single Room"));
-        requestQueue.add(new BookingRequest("Subha", "Single Room"));
-        requestQueue.add(new BookingRequest("Vannathi", "Suite"));
+        requestQueue.add(new BookingRequestUC6("Abhi", "Single Room"));
+        requestQueue.add(new BookingRequestUC6("Subha", "Single Room"));
+        requestQueue.add(new BookingRequestUC6("Vannathi", "Suite"));
 
-        RoomInventory inventory = new RoomInventory();
+        RoomInventoryUC6 inventory = new RoomInventoryUC6();
         RoomAllocationService service = new RoomAllocationService();
 
         while (!requestQueue.isEmpty()) {
